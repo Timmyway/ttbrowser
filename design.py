@@ -15,6 +15,31 @@ class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
         Form.resize(1044, 661)
+        Form.setStyleSheet("QPushButton#btnNext, QPushButton#btnPrev, QPushButton#btnRefresh {\n"
+"    background: transparent;\n"
+"    width: 30px; height: 30px;\n"
+"}\n"
+"\n"
+"QPushButton#btnNext {\n"
+"    border-image: url(\'static/button/next.png\');\n"
+"}\n"
+"QPushButton#btnPrev {\n"
+"    border-image: url(\'static/button/previous.png\');\n"
+"}\n"
+"QPushButton#btnRefresh {\n"
+"    border-image: url(\'static/button/refresh.png\');\n"
+"}\n"
+"\n"
+"QLineEdit#urlBar {\n"
+"    border: none;\n"
+"    border-radius: 10px;\n"
+"    font-size: 14px;\n"
+"    padding: 5px;\n"
+"}\n"
+"\n"
+"QLabel#httpsicon {\n"
+"    width: 15px; height: 15px;\n"
+"}")
         self.gridLayout = QtWidgets.QGridLayout(Form)
         self.gridLayout.setObjectName("gridLayout")
         self.splitterMain = QtWidgets.QSplitter(Form)
@@ -27,8 +52,6 @@ class Ui_Form(object):
         self.splitterSidebar.setObjectName("splitterSidebar")
         self.fileView = QtWidgets.QTreeView(self.splitterSidebar)
         self.fileView.setObjectName("fileView")
-        self.codeEdit = QtWidgets.QPlainTextEdit(self.splitterSidebar)
-        self.codeEdit.setObjectName("codeEdit")
         self.horizontalFrame = QtWidgets.QFrame(self.splitterMain)
         self.horizontalFrame.setFrameShape(QtWidgets.QFrame.Box)
         self.horizontalFrame.setFrameShadow(QtWidgets.QFrame.Sunken)
@@ -52,9 +75,13 @@ class Ui_Form(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.btnPrev.sizePolicy().hasHeightForWidth())
         self.btnPrev.setSizePolicy(sizePolicy)
+        self.btnPrev.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnPrev.setText("")
         self.btnPrev.setObjectName("btnPrev")
         self.horizontalLayout.addWidget(self.btnPrev)
         self.btnRefresh = QtWidgets.QPushButton(self.horizontalFrame)
+        self.btnRefresh.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnRefresh.setText("")
         self.btnRefresh.setObjectName("btnRefresh")
         self.horizontalLayout.addWidget(self.btnRefresh)
         self.btnNext = QtWidgets.QPushButton(self.horizontalFrame)
@@ -63,14 +90,17 @@ class Ui_Form(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.btnNext.sizePolicy().hasHeightForWidth())
         self.btnNext.setSizePolicy(sizePolicy)
+        self.btnNext.setCursor(QtGui.QCursor(QtCore.Qt.PointingHandCursor))
+        self.btnNext.setText("")
         self.btnNext.setObjectName("btnNext")
         self.horizontalLayout.addWidget(self.btnNext)
-        self.searchBar = QtWidgets.QLineEdit(self.horizontalFrame)
-        self.searchBar.setObjectName("searchBar")
-        self.horizontalLayout.addWidget(self.searchBar)
-        self.btnGo = QtWidgets.QPushButton(self.horizontalFrame)
-        self.btnGo.setObjectName("btnGo")
-        self.horizontalLayout.addWidget(self.btnGo)
+        self.httpsicon = QtWidgets.QLabel(self.horizontalFrame)
+        self.httpsicon.setText("")
+        self.httpsicon.setObjectName("httpsicon")
+        self.horizontalLayout.addWidget(self.httpsicon)
+        self.urlBar = QtWidgets.QLineEdit(self.horizontalFrame)
+        self.urlBar.setObjectName("urlBar")
+        self.horizontalLayout.addWidget(self.urlBar)
         self.gridLayout_6.addLayout(self.horizontalLayout, 0, 0, 1, 4)
         self.gridLayout.addWidget(self.splitterMain, 0, 0, 1, 1)
 
@@ -80,11 +110,6 @@ class Ui_Form(object):
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
         Form.setWindowTitle(_translate("Form", "Form"))
-        self.codeEdit.setPlaceholderText(_translate("Form", "Code HTML"))
-        self.btnPrev.setText(_translate("Form", "<-"))
-        self.btnRefresh.setText(_translate("Form", "Refresh"))
-        self.btnNext.setText(_translate("Form", "->"))
-        self.btnGo.setText(_translate("Form", "Go"))
 
 
 if __name__ == "__main__":
